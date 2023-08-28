@@ -1,0 +1,12 @@
+.Home>img {
+    width: 50%;
+    height: 200px;
+    margin: auto;
+    display: block;
+}
+
+.Home .Deserts {
+    margin: 10px 0;
+    /* text-align: start; */
+    
+}
