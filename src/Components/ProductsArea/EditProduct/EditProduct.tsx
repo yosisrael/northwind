@@ -6,7 +6,7 @@ import productsService from "../../../Service/ProductsService";
 import appConfig from "../../../Utils/AppConfig";
 import "./EditProduct.css";
 import notifyService from "../../../Service/NotifyService";
-import Spinner from "../../Spinner/Spinner";
+import Spinner from "../../../Utils/Spinner/Spinner";
 import useImagePreview from "../../../Utils/UseImagePreview";
 
 function EditProduct(): JSX.Element {
@@ -35,7 +35,7 @@ function EditProduct(): JSX.Element {
     }
 
     useEffect(() => {
-        productsService.getProductDetails(id)
+        productsService.getOneProduct(id)
             .then(beProduct => {
                 setValue("name", beProduct.name);
                 setValue("price", beProduct.price);

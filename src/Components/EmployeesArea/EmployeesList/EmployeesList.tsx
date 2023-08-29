@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import addImage from "../../../Assets/images/More_Icon_C.svg.png";
+import clearImage from "../../../Assets/images/clear-cache-icon.png";
 import EmployeeModel from "../../../Models/EmployeeModel";
+import { EmployeesAction, EmployeesActionType } from "../../../Redux/EmployeesState";
+import { rootStore } from "../../../Redux/rootReducer";
 import employeesService from "../../../Service/EmployeesService";
+import notifyService from "../../../Service/NotifyService";
 import appConfig from "../../../Utils/AppConfig";
-import "./EmployeesList.css";
 import useTitle from "../../../Utils/UseTitle";
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
-import { NavLink } from "react-router-dom";
+import "./EmployeesList.css";
+import Spinner from "../../../Utils/Spinner/Spinner";
 
 
 function EmployeesList(): JSX.Element {
@@ -20,9 +26,20 @@ function EmployeesList(): JSX.Element {
             .catch(err => (err.message))
     }, []);
 
+    function handleClearAll() {
+        employeesService.clearAllEmployees();
+        notifyService.success("All employees cleared successfully");
+    }
+
+    if (feEmployees.length === 0) return <Spinner />
+
     return (
         <div className="EmployeesList">
-            <NavLink className="addBtn" to={appConfig.newEmployeesRoute}>+</NavLink>
+            <div className="addBtn">
+                <NavLink to={appConfig.newEmployeesRoute}><img src={addImage} /></NavLink>
+                <NavLink to={appConfig.homeRoute} onClick={handleClearAll}><img src={clearImage} /></NavLink>
+            </div>
+
             <table>
                 <thead>
                     <tr>

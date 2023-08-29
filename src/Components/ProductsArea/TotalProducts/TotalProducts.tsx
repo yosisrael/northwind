@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import "./TotalProducts.css";
-import { productStore } from "../../../Redux/ProductsState";
+import { rootStore } from "../../../Redux/rootReducer";
 
 function TotalProducts(): JSX.Element {
 
     const [count, setCount] = useState<number>(0);
 
     useEffect(() => {
-        setCount(productStore.getState().products?.length);
+        setCount(rootStore.getState().productsReducer.products?.length);
 
         // In order to get updated even after the first time
-        const unsubscribe = productStore.subscribe(() => {
-            setCount(productStore.getState().products?.length);
+        const unsubscribe = rootStore.subscribe(() => {
+            setCount(rootStore.getState().productsReducer.products?.length);
         })
 
         return unsubscribe;

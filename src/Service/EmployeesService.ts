@@ -1,16 +1,27 @@
 import axios from "axios";
 import EmployeeModel from "../Models/EmployeeModel";
 import appConfig from "../Utils/AppConfig";
+import { rootStore } from "../Redux/rootReducer";
+import { EmployeesAction, EmployeesActionType } from "../Redux/EmployeesState";
 
 class EmployeesService {
 
     // Get all employees from the BE
     public async getAllEmployees(): Promise<EmployeeModel[]> {
-        // Get all employees into response object:
-        const response = await axios.get<EmployeeModel[]>(appConfig.employeesUrl);
 
-        // Extract the employees from the response
-        const employees = response.data;
+        let employees = rootStore.getState().employeesProducer.employees;
+
+        if (employees.length === 0) {
+
+            // Get all employees into response object:
+            const response = await axios.get<EmployeeModel[]>(appConfig.employeesUrl);
+
+            // Extract the employees from the response
+            employees = response.data;
+
+            const action: EmployeesAction = { type: EmployeesActionType.SetEmployees, payload: employees }
+            rootStore.dispatch(action);
+        }
 
         // Return employees
         return employees;
@@ -19,11 +30,18 @@ class EmployeesService {
     // Get all employees from the BE
     public async getOneEmployee(employeeId: number): Promise<EmployeeModel> {
 
-        // Get all employees into response object:
-        const response = await axios.get<EmployeeModel>(appConfig.employeesUrl + employeeId);
+        const employees = rootStore.getState().employeesProducer.employees;
 
-        // Extract the employees from the response
-        const employee = response.data;
+        let employee = employees.find(e => e.id === employeeId);
+
+        if (!employee) {
+
+            // Get all employees into response object:
+            const response = await axios.get<EmployeeModel>(appConfig.employeesUrl + employeeId);
+
+            // Extract the employees from the response
+            employee = response.data;
+        }
 
         // Return employees
         return employee;
@@ -40,7 +58,9 @@ class EmployeesService {
 
         const beEmployee = response.data;
 
-        console.log(beEmployee);
+        const action: EmployeesAction = { type: EmployeesActionType.AddEmployee, payload: beEmployee }
+
+        rootStore.dispatch(action);
 
         return beEmployee;
     }
@@ -56,9 +76,23 @@ class EmployeesService {
 
         const beEmployee = response.data;
 
-        console.log(beEmployee);
+        const action: EmployeesAction = { type: EmployeesActionType.UpdateEmployee, payload: beEmployee }
+
+        rootStore.dispatch(action);
 
         return beEmployee;
+    }
+
+    public async deleteEmployee(employeeId: number): Promise<void> {
+        await axios.delete(appConfig.employeesUrl + employeeId);
+
+        const action: EmployeesAction = { type: EmployeesActionType.DeleteEmployee, payload: employeeId }
+        rootStore.dispatch(action);
+    }
+
+    public clearAllEmployees(): void {
+        const action: EmployeesAction = { type: EmployeesActionType.ClearAll }
+        rootStore.dispatch(action);
     }
 
 

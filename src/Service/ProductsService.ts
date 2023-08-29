@@ -1,7 +1,8 @@
 import axios from "axios";
 import ProductModel from "../Models/ProductModel";
-import { ProductAction, ProductsAction, productStore } from "../Redux/ProductsState";
+import { ProductAction, ProductsAction } from "../Redux/ProductsState";
 import appConfig from "../Utils/AppConfig";
+import { rootStore } from "../Redux/rootReducer";
 
 
 class ProductsService {
@@ -9,7 +10,7 @@ class ProductsService {
     // Get all products from the BE
     public async getAllProducts(): Promise<ProductModel[]> {
 
-        let products = productStore.getState().products;
+        let products = rootStore.getState().productsReducer.products;
 
         if (products.length === 0) {
             // Get all products into response object:
@@ -20,16 +21,16 @@ class ProductsService {
 
             const action: ProductAction = { type: ProductsAction.SetProducts, payload: products }
 
-            productStore.dispatch(action);
+            rootStore.dispatch(action);
         }
 
         // Return products
         return products;
     }
 
-    public async getProductDetails(prodId: number): Promise<ProductModel> {
+    public async getOneProduct(prodId: number): Promise<ProductModel> {
 
-        const products = productStore.getState().products;
+        const products = rootStore.getState().productsReducer.products;
 
         let product = products.find(p => p.id === prodId);
 
@@ -58,8 +59,8 @@ class ProductsService {
         const beProduct = response.data;
 
         const action: ProductAction = { type: ProductsAction.AddProduct, payload: beProduct }
-        
-        productStore.dispatch(action);
+
+        rootStore.dispatch(action);
         // Return product
         return beProduct;
 
@@ -78,8 +79,8 @@ class ProductsService {
         const updatedProduct = response.data;
 
         const action: ProductAction = { type: ProductsAction.AddProduct, payload: updatedProduct }
-        
-        productStore.dispatch(action);
+
+        rootStore.dispatch(action);
 
         // Return product
         return updatedProduct;
@@ -92,9 +93,13 @@ class ProductsService {
         await axios.delete(appConfig.productsUrl + id);
 
         const action: ProductAction = { type: ProductsAction.DeleteProduct, payload: id }
-        
-        productStore.dispatch(action);
 
+        rootStore.dispatch(action);
+    }
+
+    public clearAllProducts(): void {
+        const action: ProductAction = { type: ProductsAction.ClearAll };
+        rootStore.dispatch(action);
     }
 }
 

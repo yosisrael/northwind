@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import appConfig from "../../../Utils/AppConfig";
 import "./Menu.css";
 import TotalProducts from "../../ProductsArea/TotalProducts/TotalProducts";
+import TotalEmployees from "../../EmployeesArea/TotalEmployees/TotalEmployees";
 
 function Menu(): JSX.Element {
     return (
@@ -12,6 +13,7 @@ function Menu(): JSX.Element {
             <NavLink to={appConfig.aboutRoute}>About</NavLink>
             <br />
             <TotalProducts />
+            <TotalEmployees />
             {/* <a href={appConfig.homeRoute}>Home</a> */}
             {/* <a href="/products">Products</a> */}
             {/* <a href="/about">About</a> */}

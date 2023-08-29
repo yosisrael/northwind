@@ -1,11 +1,12 @@
-import { NavLink, useParams } from "react-router-dom";
-import appConfig from "../../../Utils/AppConfig";
-import "./EmployeeDetails.css";
 import { useEffect, useState } from "react";
+import { NavLink, useParams } from "react-router-dom";
 import EmployeeModel from "../../../Models/EmployeeModel";
 import employeesService from "../../../Service/EmployeesService";
 import notifyService from "../../../Service/NotifyService";
+import appConfig from "../../../Utils/AppConfig";
+import Spinner from "../../../Utils/Spinner/Spinner";
 import useTitle from "../../../Utils/UseTitle";
+import "./EmployeeDetails.css";
 
 function EmployeeDetails(): JSX.Element {
 
@@ -16,11 +17,23 @@ function EmployeeDetails(): JSX.Element {
 
     useTitle(`Employee ${id} Details`);
 
+
     useEffect(() => {
         employeesService.getOneEmployee(id)
             .then(beEmployee => setFeEmployee(beEmployee))
             .catch(err => notifyService.error(err));
-    }, [])
+    }, []);
+
+    function handleDelete(): void {
+        try {
+            employeesService.deleteEmployee(id);
+            notifyService.success(`Employee ${id} deleted successfully`);
+        } catch (err) {
+            notifyService.error(err)
+        }
+    }
+
+    if (!feEmployee) return <Spinner />
 
     return (
         <div className="EmployeeDetails">
@@ -36,7 +49,7 @@ function EmployeeDetails(): JSX.Element {
             <span> | </span>
             <NavLink to={appConfig.editEmployeesRoute + id}>Edit</NavLink>
             <span> | </span>
-            <NavLink to="#" >Delete</NavLink>
+            <NavLink to={appConfig.employeesRoute} onClick={handleDelete}>Delete</NavLink>
 
         </div>
     );

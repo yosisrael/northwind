@@ -5,7 +5,7 @@ import notifyService from "../../../Service/NotifyService";
 import productsService from "../../../Service/ProductsService";
 import appConfig from "../../../Utils/AppConfig";
 import useTitle from "../../../Utils/UseTitle";
-import Spinner from "../../Spinner/Spinner";
+import Spinner from "../../../Utils/Spinner/Spinner";
 import "./ProductDetails.css";
 
 
@@ -20,7 +20,7 @@ function ProductDetails(): JSX.Element {
 
     // console.log(prodId);
     useEffect(() => {
-        productsService.getProductDetails(id)
+        productsService.getOneProduct(id)
             .then(beProduct => setFeProduct(beProduct))
             .catch(err => notifyService.error(err.message));
     }, [id]);

@@ -24,7 +24,7 @@ function EditEmployee(): JSX.Element {
 
     // In order to show image from Be
     const [imageSrc, setImageSrc] = useState<string>("");
-
+    
     // handle uploaded image preview
     const [imageFile, setImageFile] = useState<File | null>(null);
 
