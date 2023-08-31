@@ -11,14 +11,18 @@ class AppConfig {
 
     public readonly aboutRoute = "/about";
     public readonly homeRoute = "/home";
+    public readonly registerRoute = "/register";
+    public readonly loginRoute = "/login";
+
+
 
     public readonly apiBaseUrl = "http://localhost:3030/api/";
-    
     public readonly productsUrl = this.apiBaseUrl + "products/";
     public readonly ProductsImagesUrl = this.productsUrl + "images/";
-
     public readonly employeesUrl = this.apiBaseUrl + "employees/";
     public readonly employeesImagesUrl = this.employeesUrl + "images/";
+    public readonly registerUrl = this.apiBaseUrl + "auth/register";
+    public readonly loginUrl = this.apiBaseUrl + "auth/login";
 }
 
 const appConfig = new AppConfig();

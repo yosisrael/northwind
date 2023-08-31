@@ -9,7 +9,7 @@ class EmployeesService {
     // Get all employees from the BE
     public async getAllEmployees(): Promise<EmployeeModel[]> {
 
-        let employees = rootStore.getState().employeesProducer.employees;
+        let employees = rootStore.getState().employeesReducer.employees;
 
         if (employees.length === 0) {
 
@@ -30,7 +30,7 @@ class EmployeesService {
     // Get all employees from the BE
     public async getOneEmployee(employeeId: number): Promise<EmployeeModel> {
 
-        const employees = rootStore.getState().employeesProducer.employees;
+        const employees = rootStore.getState().employeesReducer.employees;
 
         let employee = employees.find(e => e.id === employeeId);
 

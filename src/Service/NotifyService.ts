@@ -21,6 +21,8 @@ class NotifyService {
 
         if (typeof err.response?.data === "string") return err.response?.data; // Axios case
 
+        if (Array.isArray(err.response.data)) return err.response.data.join('\n'); // Axios case
+
         if (typeof err.message === "string") return err.message;
     }
 

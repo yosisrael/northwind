@@ -1,3 +1,4 @@
+import AuthMenu from "../../AuthArea/AuthMenu/AuthMenu"
 import Home from "../../HomeArea/Home/Home"
 import Footer from "../Footer/Footer"
 import Header from "../Header/Header"
@@ -10,6 +11,7 @@ function Layout(): JSX.Element {
         <div className="Layout">
             <header>
                 <Header />
+                <AuthMenu />
             </header>
 
             <aside>
