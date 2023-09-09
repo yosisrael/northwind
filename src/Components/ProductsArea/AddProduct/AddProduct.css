@@ -1,20 +1,3 @@
-.AddProduct>form {
-    width: 300px;
-    border: 1px solid;
-    text-align: left;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 10px 10px 10px;
-}
-
-.AddProduct input,
-.AddProduct button {
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-}
-
 .AddProduct .uploadImage {
     display: flex;
     margin-bottom: 10px;

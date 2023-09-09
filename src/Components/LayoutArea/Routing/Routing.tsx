@@ -13,6 +13,7 @@ import EditProduct from "../../ProductsArea/EditProduct/EditProduct";
 import ProductDetails from "../../ProductsArea/ProductDetails/ProductDetails";
 import ProductsList from "../../ProductsArea/ProductsList/ProductsList";
 import Page404 from "../Page404/Page404";
+import CategoryList from "../../CategoriesArea/CategoryList/CategoryList";
 
 function Routing(): JSX.Element {
 
@@ -52,6 +53,10 @@ function Routing(): JSX.Element {
                 <Route path={appConfig.editEmployeesRoute + ":employeeId"} element={<EditEmployee />} />
                 {/* New Employee Route */}
                 <Route path={appConfig.newEmployeesRoute} element={<AddEmployee />} />
+
+                {/*********** Categories ***********/}
+                {/* Employees Route */}
+                <Route path={appConfig.categoriesRoute} element={<CategoryList />} />
 
 
                 {/*********** About ***********/}

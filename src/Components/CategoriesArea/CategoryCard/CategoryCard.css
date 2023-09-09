@@ -1,0 +1,10 @@
+.CategoryCard td {
+    margin: auto;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.CategoryCard img {
+    width: 50px;
+    vertical-align: middle;
+}

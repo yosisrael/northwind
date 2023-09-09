@@ -4,7 +4,6 @@ import UserModel from "../../../Models/UserModel";
 import authService from "../../../Service/AuthService";
 import notifyService from "../../../Service/NotifyService";
 import appConfig from "../../../Utils/AppConfig";
-import "./Register.css";
 import useTitle from "../../../Utils/UseTitle";
 
 function Register(): JSX.Element {
@@ -37,11 +36,19 @@ function Register(): JSX.Element {
                 <label>Last Name:</label>
                 <input type="text" {...register("lastName")} />
 
-                <label>Username: </label>
-                <input type="text" {...register("username")} />
+
+
+                <label>Email: </label>
+                <input type="email" {...register("email")} />
 
                 <label>Password:</label>
-                <input type="password" {...register("password")} />
+                <input type="password" {...register("password")} required />
+
+                <select {...register("role")} required>
+                    <option disabled selected value="">Select Role</option>
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
 
                 <button>Register</button>
             </form>

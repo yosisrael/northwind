@@ -10,6 +10,7 @@ function Menu(): JSX.Element {
             <NavLink to={appConfig.homeRoute}>Home</NavLink>
             <NavLink to={appConfig.productsRoute}>Products</NavLink>
             <NavLink to={appConfig.employeesRoute}>Employees</NavLink>
+            <NavLink to={appConfig.categoriesRoute}>Categories</NavLink>
             <NavLink to={appConfig.aboutRoute}>About</NavLink>
             <br />
             <TotalProducts />

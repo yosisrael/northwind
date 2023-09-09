@@ -5,8 +5,7 @@ import authService from "../../../Service/AuthService";
 import notifyService from "../../../Service/NotifyService";
 import appConfig from "../../../Utils/AppConfig";
 import useTitle from "../../../Utils/UseTitle";
-import "./Login.css";
-import { useEffect } from "react";
+
 
 function Login(): JSX.Element {
 
@@ -30,8 +29,8 @@ function Login(): JSX.Element {
         <div className="Register">
             <h2>Login</h2>
             <form onSubmit={handleSubmit(send)}>
-                <label>Username: </label>
-                <input type="text" {...register("username")} />
+                <label>email: </label>
+                <input type="text" {...register("email")} />
 
                 <label>Password:</label>
                 <input type="password" {...register("password")} />

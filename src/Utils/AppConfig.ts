@@ -9,6 +9,9 @@ class AppConfig {
     public readonly editEmployeesRoute = this.employeesRoute + "edit/";
     public readonly employeeDetailsRoute = this.employeesRoute + "details/";
 
+
+    public readonly categoriesRoute = "/categories/";
+
     public readonly aboutRoute = "/about";
     public readonly homeRoute = "/home";
     public readonly registerRoute = "/register";
@@ -19,10 +22,15 @@ class AppConfig {
     public readonly apiBaseUrl = "http://localhost:3030/api/";
     public readonly productsUrl = this.apiBaseUrl + "products/";
     public readonly ProductsImagesUrl = this.productsUrl + "images/";
+
     public readonly employeesUrl = this.apiBaseUrl + "employees/";
     public readonly employeesImagesUrl = this.employeesUrl + "images/";
-    public readonly registerUrl = this.apiBaseUrl + "auth/register";
-    public readonly loginUrl = this.apiBaseUrl + "auth/login";
+
+    public readonly registerUrl = this.apiBaseUrl + "register";
+    public readonly loginUrl = this.apiBaseUrl + "login";
+
+    public readonly categoriesUrl = this.apiBaseUrl + "categories/"
+
 }
 
 const appConfig = new AppConfig();

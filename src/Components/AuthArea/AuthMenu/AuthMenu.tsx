@@ -13,14 +13,14 @@ function AuthMenu(): JSX.Element {
 
     const navigate = useNavigate();
     useEffect(() => {
-        if (!user) navigate(appConfig.loginRoute);
-
         setUser(rootStore.getState().authReducer.user);
 
-        const unsubscribe = rootStore.subscribe(() => setUser(rootStore.getState().authReducer.user));
+        const unsubscribe = rootStore.subscribe(() => {
+            setUser(rootStore.getState().authReducer.user)
+        });
 
         return unsubscribe;
-    }, []);
+    }, [user]);
 
     function logoutMe() {
         authService.logout();

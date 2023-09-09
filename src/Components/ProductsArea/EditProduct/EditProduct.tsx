@@ -40,8 +40,8 @@ function EditProduct(): JSX.Element {
                 setValue("name", beProduct.name);
                 setValue("price", beProduct.price);
                 setValue("stock", beProduct.stock);
-                setValue("imageName", beProduct.imageName);
-                setPreviewSrc(appConfig.ProductsImagesUrl + beProduct.imageName);
+                setValue("imageUrl", beProduct.imageUrl);
+                setPreviewSrc(beProduct.imageUrl);
             })
             .catch(err => notifyService.error(err));
     }, [id]);

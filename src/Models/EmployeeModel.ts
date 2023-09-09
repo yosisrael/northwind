@@ -6,7 +6,7 @@ class EmployeeModel {
     public country: string;
     public city: string;
     public birthDate: string;
-    public imageName: string;
+    public imageUrl: string;
     public image: File;
 }
 

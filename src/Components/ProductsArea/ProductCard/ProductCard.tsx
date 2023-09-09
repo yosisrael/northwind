@@ -25,7 +25,7 @@ function ProductCard(props: ProductCardProps): JSX.Element {
                     <br />
                 </div>
                 <div>
-                    <img src={appConfig.ProductsImagesUrl + props.product.imageName} />
+                    <img src={props.product.imageUrl} />
                 </div>
 
             </div>

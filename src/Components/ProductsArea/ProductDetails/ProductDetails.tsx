@@ -48,7 +48,7 @@ function ProductDetails(): JSX.Element {
             <h3>Price: {feProduct?.price}</h3>
             <h3>Stock: {feProduct?.stock}</h3>
             <br />
-            <img src={appConfig.ProductsImagesUrl + feProduct?.imageName} />
+            <img src={feProduct?.imageUrl} />
             <br />
             <NavLink to={appConfig.productsRoute}>Back</NavLink>
             <span> | </span>

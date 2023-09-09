@@ -43,7 +43,7 @@ function EmployeeDetails(): JSX.Element {
             <h3>Lives In: {feEmployee?.city + ", " + feEmployee?.country}</h3>
             <h3>BirthDay: {feEmployee?.birthDate}</h3>
             <br />
-            <img src={appConfig.employeesUrl + "/images/" + feEmployee?.imageName} />
+            <img src={feEmployee?.imageUrl} />
             <br />
             <NavLink to={appConfig.employeesRoute}>Back</NavLink>
             <span> | </span>

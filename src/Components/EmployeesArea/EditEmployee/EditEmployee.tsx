@@ -47,7 +47,7 @@ function EditEmployee(): JSX.Element {
             setValue("birthDate", beEmployee.birthDate);
             // setValue("imageName", beEmployee.imageName);
 
-            setImageSrc(appConfig.employeesImagesUrl + beEmployee.imageName);
+            setImageSrc(beEmployee.imageUrl);
         }).catch(err => notifyService.error(err))
     }, []);
 

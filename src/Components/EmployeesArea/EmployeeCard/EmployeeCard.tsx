@@ -17,7 +17,7 @@ function EmployeeCard(props: EmployeeProps): JSX.Element {
 
     return (
         <tr className="EmployeeCard" onClick={handleClick}>
-            <td><img src={`${appConfig.employeesUrl}/images/${props.employee.imageName}`} /></td>
+            <td><img src={props.employee.imageUrl} /></td>
             <td>{props.employee.firstName} {props.employee.lastName}</td>
             <td>{props.employee.title}</td>
             <td>{props.employee.city},{props.employee.country}</td>

@@ -6,7 +6,7 @@ class ProductModel {
     public name?: string;
     public price: number;
     public stock: number;
-    public imageName: string;
+    public imageUrl: string;
     public image: File;
 }
 

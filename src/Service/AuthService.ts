@@ -29,20 +29,9 @@ class AuthService {
         const token = response.data;
 
         // Save token and user.
-        const action: AuthAction = { type: AuthActionTypes.Login, payload: token };
+        const action: AuthAction = { type: AuthActionTypes.Login, payload: token};
         rootStore.dispatch(action);
     }
-
-    // public getToken(): string {
-    //     const token = localStorage.getItem("token");
-
-    //     if (token) {
-    //         const action: AuthAction = { type: AuthActionTypes.Login, payload: token };
-    //         rootStore.dispatch(action);
-    //     }
-
-    //     return token;
-    // }
 
     // Logout 
     public logout(): void {
