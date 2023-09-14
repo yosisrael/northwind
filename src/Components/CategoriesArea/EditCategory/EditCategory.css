@@ -1,0 +1,8 @@
+.EditCategory .uploadImage {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.EditCategory .uploadImage img {
+    width: 40px;
+}

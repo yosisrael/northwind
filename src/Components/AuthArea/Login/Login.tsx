@@ -18,11 +18,10 @@ function Login(): JSX.Element {
     async function send(credentials: CredentialsModel) {
         try {
             await authService.login(credentials);
-            navigate(appConfig.homeRoute);
+            navigate(-1);
         } catch (err) {
             notifyService.error(err)
         }
-
     }
 
     return (

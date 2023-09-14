@@ -30,3 +30,15 @@ form button {
     box-sizing: border-box;
     margin-bottom: 10px;
 }
+
+.addBtn {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 40px;
+}
+
+.addBtn img {
+    width: 50px;
+    height: 50px;
+}

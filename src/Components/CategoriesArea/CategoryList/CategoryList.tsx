@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import addImage from "../../../Assets/images/More_Icon_C.svg.png";
+import clearImage from "../../../Assets/images/clear-cache-icon.png";
 import CategoryModel from "../../../Models/CategoryModel";
-import categoriesService from "../../../Service/CategoriesModel";
+import categoriesService from "../../../Service/CategoriesService";
 import notifyService from "../../../Service/NotifyService";
 import appConfig from "../../../Utils/AppConfig";
 import Spinner from "../../../Utils/Spinner/Spinner";
@@ -18,15 +20,23 @@ function CategoryList(): JSX.Element {
         categoriesService.getAllCategories()
             .then(categories => setCategories(categories))
             .catch(err => {
-                if (err.response.status === 401) navigate(appConfig.loginRoute);
+                if (err.response.status === 401 || err.response.status === 403) navigate(appConfig.loginRoute);
                 notifyService.error(err);
             })
     }, [])
-    console.log(categories)
+
+    function handleClearAll() {
+        categoriesService.clearAll();
+        notifyService.success("Categories list cleared");
+    }
 
     if (categories.length === 0) return <Spinner />
     return (
         < div className="CategoryList" >
+            <div className="addBtn">
+                <NavLink to={appConfig.newCategoryRoute}><img src={addImage} /></NavLink>
+                <NavLink to={appConfig.homeRoute} onClick={handleClearAll}><img src={clearImage} /></NavLink>
+            </div>
             <table>
                 <thead>
                     <tr>

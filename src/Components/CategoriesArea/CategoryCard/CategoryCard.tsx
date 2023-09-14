@@ -11,7 +11,6 @@ type CategoryProps = {
 function CategoryCard(props: CategoryProps): JSX.Element {
 
     const navigate = useNavigate();
-
     return (
         <tr className="CategoryCard" onClick={() => navigate(appConfig.categoriesRoute + "details/" + props.category.id)}>
             <td>{props.category.name}</td>

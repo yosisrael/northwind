@@ -14,6 +14,9 @@ import ProductDetails from "../../ProductsArea/ProductDetails/ProductDetails";
 import ProductsList from "../../ProductsArea/ProductsList/ProductsList";
 import Page404 from "../Page404/Page404";
 import CategoryList from "../../CategoriesArea/CategoryList/CategoryList";
+import CategoryDetails from "../../CategoriesArea/CategoryDetails/CategoryDetails";
+import EditCategory from "../../CategoriesArea/EditCategory/EditCategory";
+import AddCategory from "../../CategoriesArea/AddCategory/AddCategory";
 
 function Routing(): JSX.Element {
 
@@ -57,6 +60,12 @@ function Routing(): JSX.Element {
                 {/*********** Categories ***********/}
                 {/* Employees Route */}
                 <Route path={appConfig.categoriesRoute} element={<CategoryList />} />
+
+                <Route path={appConfig.categoryDetailsRoute + ":categoryId"} element={<CategoryDetails />} />
+
+                <Route path={appConfig.editCategoryRoute + ":categoryId"} element={<EditCategory />} />
+
+                <Route path={appConfig.newCategoryRoute} element={<AddCategory />} />
 
 
                 {/*********** About ***********/}

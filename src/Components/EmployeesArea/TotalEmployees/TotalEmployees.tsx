@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./TotalEmployees.css";
 import { rootStore } from "../../../Redux/rootReducer";
 
 function TotalEmployees(): JSX.Element {

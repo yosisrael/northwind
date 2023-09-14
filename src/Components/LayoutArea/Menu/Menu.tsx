@@ -3,6 +3,7 @@ import appConfig from "../../../Utils/AppConfig";
 import "./Menu.css";
 import TotalProducts from "../../ProductsArea/TotalProducts/TotalProducts";
 import TotalEmployees from "../../EmployeesArea/TotalEmployees/TotalEmployees";
+import TotalCategories from "../../CategoriesArea/TotalCategories/TotalCategories";
 
 function Menu(): JSX.Element {
     return (
@@ -15,6 +16,7 @@ function Menu(): JSX.Element {
             <br />
             <TotalProducts />
             <TotalEmployees />
+            <TotalCategories />
             {/* <a href={appConfig.homeRoute}>Home</a> */}
             {/* <a href="/products">Products</a> */}
             {/* <a href="/about">About</a> */}

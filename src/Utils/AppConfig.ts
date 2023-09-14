@@ -11,6 +11,12 @@ class AppConfig {
 
 
     public readonly categoriesRoute = "/categories/";
+    public readonly categoryDetailsRoute = this.categoriesRoute + "details/";
+    public readonly editCategoryRoute = this.categoriesRoute + "edit/";
+    public readonly newCategoryRoute = this.categoriesRoute + "new/";
+    
+
+
 
     public readonly aboutRoute = "/about";
     public readonly homeRoute = "/home";
