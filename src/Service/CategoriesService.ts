@@ -11,10 +11,10 @@ class CategoriesService {
         let categories = rootStore.getState().categoriesReducer.categories;
         if (categories.length === 0) {
 
-            const options = {
-                headers: { 'Authorization': `Bearer ${rootStore.getState().authReducer.token}` }
-            }
-            const response = await axios.get<CategoryModel[]>(appConfig.categoriesUrl, options);
+            // const options = {
+            //     headers: { 'Authorization': `Bearer ${rootStore.getState().authReducer.token}` }
+            // }
+            const response = await axios.get<CategoryModel[]>(appConfig.categoriesUrl);
 
             categories = response.data;
 
@@ -27,11 +27,7 @@ class CategoriesService {
 
     public async getOneCategory(id: number): Promise<CategoryModel> {
 
-        const options = {
-            headers: { 'Authorization': `Bearer ${rootStore.getState().authReducer.token}` }
-        }
-
-        const response = await axios.get(appConfig.categoriesUrl + id, options);
+        const response = await axios.get(appConfig.categoriesUrl + id);
 
         const category = response.data;
 
@@ -42,7 +38,7 @@ class CategoriesService {
 
         const options = {
             headers: {
-                'Authorization': `Bearer ${rootStore.getState().authReducer.token}`,
+                // 'Authorization': `Bearer ${rootStore.getState().authReducer.token}`,
                 "Content-Type": "multipart/form-data"
             }
         }
@@ -59,7 +55,7 @@ class CategoriesService {
 
         const options = {
             headers: {
-                'Authorization': `Bearer ${rootStore.getState().authReducer.token}`,
+                // 'Authorization': `Bearer ${rootStore.getState().authReducer.token}`,
                 "Content-Type": "multipart/form-data"
             }
         }
@@ -73,12 +69,12 @@ class CategoriesService {
     }
 
     public async deleteCategory(id: number): Promise<void> {
-        const options = {
-            headers: {
-                'Authorization': `Bearer ${rootStore.getState().authReducer.token}`
-            }
-        }
-        await axios.delete(appConfig.categoriesUrl + id, options);
+        // const options = {
+        //     headers: {
+        //         'Authorization': `Bearer ${rootStore.getState().authReducer.token}`
+        //     }
+        // }
+        await axios.delete(appConfig.categoriesUrl + id);
         const action: CategoryAction = { type: CategoriesActionTypes.DeleteCategory, payload: id }
         rootStore.dispatch(action);
     }

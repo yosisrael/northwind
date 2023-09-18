@@ -17,6 +17,7 @@ import CategoryList from "../../CategoriesArea/CategoryList/CategoryList";
 import CategoryDetails from "../../CategoriesArea/CategoryDetails/CategoryDetails";
 import EditCategory from "../../CategoriesArea/EditCategory/EditCategory";
 import AddCategory from "../../CategoriesArea/AddCategory/AddCategory";
+import ContactUs from "../../AboutArea/ContcatUs/ContactUs";
 
 function Routing(): JSX.Element {
 
@@ -34,6 +35,11 @@ function Routing(): JSX.Element {
 
                 {/*********** Home ***********/}
                 <Route path={appConfig.homeRoute} element={<Home />} />
+
+                {/*********** Home ***********/}
+                <Route path={appConfig.contactUsRoute} element={<ContactUs />} />
+
+
 
                 {/********** Products **********/}
 

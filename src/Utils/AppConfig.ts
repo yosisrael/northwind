@@ -14,12 +14,14 @@ class AppConfig {
     public readonly categoryDetailsRoute = this.categoriesRoute + "details/";
     public readonly editCategoryRoute = this.categoriesRoute + "edit/";
     public readonly newCategoryRoute = this.categoriesRoute + "new/";
-    
+
 
 
 
     public readonly aboutRoute = "/about";
     public readonly homeRoute = "/home";
+    public readonly contactUsRoute = "/contact-us";
+
     public readonly registerRoute = "/register";
     public readonly loginRoute = "/login";
 
@@ -36,6 +38,9 @@ class AppConfig {
     public readonly loginUrl = this.apiBaseUrl + "login";
 
     public readonly categoriesUrl = this.apiBaseUrl + "categories/"
+    public readonly contactUsUrl = this.apiBaseUrl + "contact-us/"
+
+
 
 }
 

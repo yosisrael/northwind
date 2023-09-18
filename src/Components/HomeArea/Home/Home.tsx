@@ -3,6 +3,8 @@ import food_products1 from "../../../Assets/images/food-product-labelling.jpg"
 import food_products2 from "../../../Assets/images/food-products-2.webp"
 import { useEffect, useState } from "react";
 import useTitle from "../../../Utils/UseTitle";
+import ClockFc from "../ClockFc/ClockFc";
+import ClockClass from "../ClockClass/ClockClass";
 
 
 function Home(): JSX.Element {
@@ -14,16 +16,8 @@ function Home(): JSX.Element {
     const setSaleInfo = arr[1];
 
     const [saleInfo2, setSaleInfo2] = useState<string>("");
-    const [time, setTime] = useState<string>();
     const [randomNum, setRandomNum] = useState<number>(Math.floor(Math.random() * 2 + 1));
     // let randomNum = Math.floor(Math.random() * 2 + 1);
-
-    useEffect(() => {
-        const intervalID = setInterval(() => {
-            displayTime();
-        }, 1000)
-        return () => clearInterval(intervalID);
-    }, []);
 
     function displaySales() {
         ("Sale: 50% discount on all our products");
@@ -33,10 +27,10 @@ function Home(): JSX.Element {
         setSaleInfo2("Sale: 20% discount on all our products");
     }
 
-    function displayTime(): void {
-        const now = new Date();
-        setTime(now.toLocaleTimeString());
-    }
+    // function displayTime(): void {
+    //     const now = new Date();
+    //     setTime(now.toLocaleTimeString());
+    // }
 
     // const randomNumber = Math.floor(Math.random() * 2 + 1);
 
@@ -49,6 +43,8 @@ function Home(): JSX.Element {
     return (
         <div className="Home">
             <h2>Welcome to Northwind Traders!</h2>
+            <ClockClass format="24h" />
+            <ClockFc />
             {/* {randomNumber === 1 ? <img src={food_products1} /> : <img src={food_products2} />} */}
 
             {randomNum === 1 && <img src={food_products1} />}
@@ -65,8 +61,8 @@ function Home(): JSX.Element {
             {<p>{saleInfo}</p>}
             <button onClick={displaySales2}>Another Sale</button>
             {<p>{saleInfo2}</p>}
-            <button onClick={displayTime}>Show Time</button>
-            {<p>{time}</p>}
+            {/* <button onClick={displayTime}>Show Time</button> */}
+            {/* {<p>{time}</p>} */}
         </div>
     );
 }
